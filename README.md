@@ -2,9 +2,7 @@
 
 ## Project Overview
 
-The **OTP Validator** is a serverless application built on AWS that provides secure, multi-factor authentication through One-Time Passwords (OTP). This project demonstrates a complete end-to-end solution combining AWS Lambda, API Gateway, DynamoDB, and SES for user email verification.
-
-The system generates secure OTPs, stores hashed values in DynamoDB with automatic expiration, and provides a responsive frontend for seamless user experience.
+This project demonstrates a complete end-to-end solution combining AWS Lambda, API Gateway, DynamoDB, and SES for user email verification.
 
 ---
 
@@ -54,13 +52,6 @@ User Frontend → API Gateway → Lambda Functions → DynamoDB / SES
 #### 1. **requestOtp Lambda Function**
 - **File**: `backend/src/requestOtp.py`
 - **Purpose**: Generate random OTP and initiate email sending
-- **Operations**:
-  - Generates a cryptographically secure 6-digit OTP
-  - Creates an HMAC hash of the OTP for secure storage
-  - Stores entry in DynamoDB with user email, name, city, and hashed OTP
-  - Sets TTL (Time To Live) for automatic expiration (default: 10 minutes)
-  - Sends OTP to user's email via AWS SES (Inprogress setup)
-  - Returns success/error response
 
 #### 2. **verifyOtp Lambda Function**
 - **File**: `backend/src/verifyOtp.py`
@@ -90,71 +81,13 @@ User Frontend → API Gateway → Lambda Functions → DynamoDB / SES
 | `timestamp` | Number | Creation time (Unix timestamp) |
 | `ttl` | Number | TTL attribute for automatic expiration |
 
-**Security Features**:
-- OTP stored as HMAC hash, never in plaintext
-- Automatic expiration via TTL mechanism
-- Server-side expiry validation
-- Email-based access control
-
 ---
-
-## Frontend Application
-
-The frontend provides an intuitive, responsive interface for users to:
-
-1. **Request OTP Screen**: Enter email, name, and city
-2. **Verify OTP Screen**: Submit OTP received via email
-3. **Success Screen**: Confirmation of successful verification
-
 ### Frontend Images
 **Request OTP Page:**
 <img src="data/frontend.png" width="800" height="400" alt="requestPage" />
 
 **Verification Status:**
 <img src="data/otp.png" width="800" height="400" alt="VerifyPage" />
-
-### Frontend Files
-- `frontend/index.html` - Main HTML structure
-- `frontend/script.js` - Request/verify logic and API integration
-- `frontend/style.css` - Responsive styling
-- `frontend/proxy.py` - Backend proxy for local development
-- `frontend/Dockerfile` - Docker containerization for deployment
-
----
-
-## Deployment Instructions
-
-### Backend (AWS Lambda)
-
-1. Navigate to the backend directory:
-   ```bash
-   cd backend
-   ```
-
-2. Deploy using AWS SAM:
-   ```bash
-   sam build
-   sam deploy --guided
-   ```
-
-3. Copy the `OtpApiBaseUrl` from stack outputs
-
-### Frontend (Docker)
-
-1. Build the Docker image:
-   ```bash
-   cd frontend
-   docker build -t otp-frontend:latest .
-   ```
-
-2. Run the container:
-   ```bash
-   docker run -p 8000:8000 otp-frontend:latest
-   ```
-
-3. Access at `http://localhost:8000`
-
----
 
 ---
 
@@ -194,16 +127,6 @@ The frontend provides an intuitive, responsive interface for users to:
     ├── proxy.py                       # Development proxy
     └── Dockerfile                     # Container configuration
 ```
-
----
-
-## Notes
-
-- **Security**: OTPs are never stored in plaintext. DynamoDB stores an HMAC hash + timestamps, and TTL auto-expires items.
-- **Expiry Enforcement**: `verifyOtp` enforces expiry server-side even though DynamoDB TTL is eventual.
-- **Scalability**: Serverless architecture automatically scales with demand.
-- **Cost-Efficient**: Pay only for what you use; no idle infrastructure costs.
-
 ---
 
 ## Next Steps
