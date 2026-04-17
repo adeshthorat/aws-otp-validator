@@ -10,7 +10,7 @@ The system generates secure OTPs, stores hashed values in DynamoDB with automati
 
 ## Architecture Diagram
 
-![Architecture Diagram](data/Blank%20board.png)
+<img src="data/Blank board.png" width="500" height="300" alt="Architecture Diagram" />
 
 ---
 
@@ -59,7 +59,7 @@ User Frontend → API Gateway → Lambda Functions → DynamoDB / SES
   - Creates an HMAC hash of the OTP for secure storage
   - Stores entry in DynamoDB with user email, name, city, and hashed OTP
   - Sets TTL (Time To Live) for automatic expiration (default: 10 minutes)
-  - Sends OTP to user's email via AWS SES
+  - Sends OTP to user's email via AWS SES (Inprogress setup)
   - Returns success/error response
 
 #### 2. **verifyOtp Lambda Function**
@@ -107,15 +107,11 @@ The frontend provides an intuitive, responsive interface for users to:
 3. **Success Screen**: Confirmation of successful verification
 
 ### Frontend Images
-
 **Request OTP Page:**
-![Frontend Application](data/frontend.png)
-
-**Last Request Status:**
-![Last Request](data/last.png)
+<img src="data/frontend.png" width="800" height="400" alt="requestPage" />
 
 **Verification Status:**
-![OTP Verification](data/otp.png)
+<img src="data/otp.png" width="800" height="400" alt="VerifyPage" />
 
 ### Frontend Files
 - `frontend/index.html` - Main HTML structure
