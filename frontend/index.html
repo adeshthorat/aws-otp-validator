@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure OTP Authentication</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    
+    <div class="container">
+        <div class="glass-card">
+            <div class="header">
+                <h2>Secure Access</h2>
+                <p>Verify your identity to continue</p>
+            </div>
+
+            <!-- Request OTP Form -->
+            <form id="request-form" class="form-section active">
+                <div class="input-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required placeholder="Sam Doe">
+                </div>
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required placeholder="sam.altman@gmail.com">
+                </div>
+                <div class="input-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" required placeholder="Pune">
+                </div>
+                <button type="submit" class="primary-btn" id="request-btn">
+                    <span class="btn-text">Request OTP</span>
+                    <span class="loader hidden"></span>
+                </button>
+            </form>
+
+            <!-- Verify OTP Form -->
+            <form id="verify-form" class="form-section">
+                <div class="input-group">
+                    <label for="email-verify">Email Address</label>
+                    <input type="email" id="email-verify" required readonly>
+                </div>
+                <div class="input-group">
+                    <label for="otp">One-Time Password</label>
+                    <input type="text" id="otp" required placeholder="Enter 6-digit OTP" maxlength="6" pattern="\d{6}">
+                </div>
+                <button type="submit" class="primary-btn" id="verify-btn">
+                    <span class="btn-text">Verify Code</span>
+                    <span class="loader hidden"></span>
+                </button>
+                <div class="resend-text">
+                    <a href="#" id="back-to-request">Use a different email</a>
+                </div>
+            </form>
+
+            <div id="message" class="message-box hidden"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
