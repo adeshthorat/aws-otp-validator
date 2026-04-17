@@ -10,6 +10,7 @@ import time
 # Configure logging
 log_dir = '/var/logs'
 log_file = os.path.join(log_dir, 'app.log')
+api_endpoint = os.getenv('API_ENDPOINT')
 
 # Create log directory if it doesn't exist
 if not os.path.exists(log_dir):
@@ -90,7 +91,8 @@ class CORSProxyHandler(SimpleHTTPRequestHandler):
             # Proxy to AWS API Gateway
             # Remove leading slash to get the endpoint path
             endpoint = self.path.lstrip('/')
-            target_url = f"https://fwg9vxcpt0.execute-api.us-east-1.amazonaws.com/Prod/{endpoint}"
+            #api url as environment variable
+            target_url = f"{api_endpoint}/{endpoint}"
             
             logger.info(f"  Target URL: {target_url}")
             
