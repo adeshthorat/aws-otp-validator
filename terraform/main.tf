@@ -65,6 +65,7 @@ module "api_gateway" {
   name        = "${var.project_name}-api"
   description = "API Gateway for OTP validation"
   stage_name  = "prod"
+  region = var.aws_region
   endpoints = {
     request = {
       path              = "requestOtp"
