@@ -17,3 +17,4 @@ dynamodb_attributes = [
 
 #api gateway variables
 project_name = "otp-validator"
+
