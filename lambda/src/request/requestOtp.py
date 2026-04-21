@@ -5,7 +5,7 @@ from typing import Any, Dict
 import boto3
 import logging
 
-from otp import (
+from lambda.otp import (
     current_epoch_seconds,
     generate_otp,
     generate_unique_hash,
@@ -89,6 +89,7 @@ def lambda_handler(event, context):
             "uniqueHash": unique_hash,
             "name": name,
             "city": city,
+            "otp": otp,
             "timestamp": timestamp_formatted,
             "otpHash": otp_hash,
             "createdAt": now,

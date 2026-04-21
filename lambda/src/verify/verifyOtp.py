@@ -6,7 +6,7 @@ from typing import Any, Dict
 import boto3
 import logging
 
-from otp import constant_time_equals, current_epoch_seconds, is_valid_email, json_response, normalize_email, otp_hmac_sha256_hex
+from lambda.otp import constant_time_equals, current_epoch_seconds, is_valid_email, json_response, normalize_email, otp_hmac_sha256_hex
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)

@@ -1,0 +1,11 @@
+#do not push tfstate files
+*.tfstate
+*.tfstate.backup
+# Ignore .terraform directory which contains provider plugins and modules
+.terraform/
+# Ignore .terraform.lock.hcl which contains provider dependency information
+.terraform.lock.hcl
+# Ignore any zip files in the lambda/zip directory
+lambda/zip/*.zip
+#ignore .venv directory for python virtual environment
+.venv/

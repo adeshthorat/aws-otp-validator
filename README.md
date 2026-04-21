@@ -111,21 +111,19 @@ User Frontend → API Gateway → Lambda Functions → DynamoDB / SES
 ├── DEPLOYMENT_GUIDE.md                 # Detailed deployment steps
 ├── API_USAGE.md                        # API endpoint documentation
 ├── data/                               # Images and diagrams
-│   ├── Blank board.png                # Architecture diagram
-│   ├── frontend.png                   # Frontend screenshot
-│   ├── last.png                       # Last request screenshot
-│   └── otp.png                        # OTP verification screenshot
-├── backend/                            # Lambda functions
-│   └── src/
-│       ├── requestOtp.py              # OTP request logic
-│       ├── verifyOtp.py               # OTP verify logic
-│       └── otp.py                     # OTP utilities
+├── Lambda/                            # Lambda functions
 └── frontend/                           # Web application
-    ├── index.html                     # Main page
-    ├── script.js                      # Frontend logic
-    ├── style.css                      # Styling
-    ├── proxy.py                       # Development proxy
-    └── Dockerfile                     # Container configuration
+├──terraform/                           # Terraform modules to deploy resources
+   main.tf
+   variable.tf
+   terraform.tfvars
+   module/                      
+     |__api
+     |__lambda
+     |__iam
+     |__dynamodb
+
+
 ```
 ---
 
