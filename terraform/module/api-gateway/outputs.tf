@@ -9,6 +9,5 @@ output "execution_arn" {
 }
 
 output "stage_invoke_url" {
-  description = "Invoke URL of the deployed API Gateway stage"
-  value       = "${aws_api_gateway_deployment.this.invoke_url}${var.stage_name}"
+  value = "https://${aws_api_gateway_rest_api.this.id}.execute-api.${var.region}.amazonaws.com/${var.stage_name}"
 }

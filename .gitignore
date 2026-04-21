@@ -6,6 +6,6 @@
 # Ignore .terraform.lock.hcl which contains provider dependency information
 .terraform.lock.hcl
 # Ignore any zip files in the lambda/zip directory
-lambda/zip/*.zip
+
 #ignore .venv directory for python virtual environment
 .venv/

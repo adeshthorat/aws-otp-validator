@@ -3,6 +3,12 @@ variable "name" {
   type        = string
 }
 
+variable "region" {
+   description = "AWS Region to deploy to"
+   type        = string
+   default = "us-east-1"
+}
+
 variable "description" {
   description = "Description for api gateway"
   type        = string
