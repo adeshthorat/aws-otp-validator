@@ -8,7 +8,7 @@ variable "otp_hash_key" {
   description = "Hash key name for OTP in DynamoDB"
   type        = string
   default     = "86a26e57248d8075ed9eb1a867b415149a7dd91e5f675901cb7781b1c9"
-  
+
 }
 
 variable "project_name" {
@@ -45,5 +45,5 @@ variable "dynamodb_attributes" {
 #     http_method       = string
 #     lambda_invoke_arn = string
 #   }))
-  
+
 # }

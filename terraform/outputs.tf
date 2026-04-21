@@ -15,10 +15,10 @@ output "verify_otp_endpoint" {
 
 output "dynamo-db-table-name" {
   description = "Name of the DynamoDB table"
-  value       = module.dynamodb.table_name  
+  value       = module.dynamodb.table_name
 }
 
 output "iam-role" {
   description = "Lambda iam role"
-  value = module.iam.role_arn
+  value       = module.iam.role_arn
 }

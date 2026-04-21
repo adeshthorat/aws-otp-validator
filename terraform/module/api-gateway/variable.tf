@@ -21,22 +21,17 @@ variable "stage_name" {
   default     = "prod"
 }
 
-variable "request_lambda_invoke_arn" {
-  description = "Invoke ARN of the Request OTP Lambda function"
+variable "base_path" {
+  description = "Base path for the API endpoints"
   type        = string
-}
-
-variable "verify_lambda_invoke_arn" {
-  description = "Invoke ARN of the Verify OTP Lambda function"
-  type        = string
+  default     = ""
 }
 
 variable "endpoints" {
   description = "Map of API endpoints with their configurations"
   type = map(object({
-    path              = string
     http_method       = string
     lambda_invoke_arn = string
-  }))
-  
+  }) 
+  )
 }
