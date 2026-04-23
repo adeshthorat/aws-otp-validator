@@ -3,6 +3,12 @@ output "api_gateway_invoke_url" {
   value       = module.api_gateway.stage_invoke_url
 }
 
+output "iam-role-arn" {
+  description = "IAM Role ARN for Lambda execution"
+  value       = module.iam.role_arn
+
+}
+
 output "request_otp_endpoint" {
   description = "Endpoint to request an OTP"
   value       = "${module.api_gateway.stage_invoke_url}/otp/request"

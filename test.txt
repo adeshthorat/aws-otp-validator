@@ -1,0 +1,5 @@
+api_gateway_invoke_url = "https://zkh69pfck8.execute-api.us-east-1.amazonaws.com/dev" -> null
+dynamo-db-table-name   = "otp-table" -> null
+iam-role               = "arn:aws:iam::536197253951:role/otp-validator-lambda-exec-role" -> null
+request_otp_endpoint   = "https://zkh69pfck8.execute-api.us-east-1.amazonaws.com/dev/otp/request" -> null
+verify_otp_endpoint    = "https://zkh69pfck8.execute-api.us-east-1.amazonaws.com/dev/otp/verify" -> null

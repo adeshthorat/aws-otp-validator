@@ -11,6 +11,12 @@ variable "otp_hash_key" {
 
 }
 
+variable "create-ec2-role" {
+  description = "Whether to create an EC2 Instance Role and Instance Profile for Systems Manager access (true/false)"
+  type        = bool
+  default     = false
+}
+
 variable "project_name" {
   description = "Project name prefix"
   type        = string
@@ -37,13 +43,3 @@ variable "dynamodb_attributes" {
   }))
   default = []
 }
-
-# variable "api-endpoints" {
-#   description = "Map of API endpoints with their configurations"
-#   type = map(object({
-#     path              = string
-#     http_method       = string
-#     lambda_invoke_arn = string
-#   }))
-
-# }

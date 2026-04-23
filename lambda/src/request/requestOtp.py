@@ -5,7 +5,7 @@ from typing import Any, Dict
 import boto3
 import logging
 
-from lambda.otp import (
+from otp import (
     current_epoch_seconds,
     generate_otp,
     generate_unique_hash,

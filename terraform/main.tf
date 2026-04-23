@@ -11,10 +11,9 @@ provider "aws" {
   region = var.aws_region
 }
 
-# IAM Module
+# IAM Module for lambda execution role and policies
 module "iam" {
-  source = "./module/iam"
-
+  source             = "./module/iam"
   role_name          = "${var.project_name}-lambda-exec-role"
   dynamodb_table_arn = module.dynamodb.table_arn
 }
@@ -28,12 +27,12 @@ module "dynamodb" {
   attributes = var.dynamodb_attributes
 }
 
-# Lambda Modules
+# Lambda modules
 module "lambda_request_otp" {
   source = "./module/lambda"
 
   function_name          = "RequestOtpFunction"
-  zip_path               = "../lambda/zip/request-otp.zip"
+  zip_path               = "../lambda/zip/requestotp.zip"
   handler                = "requestOtp.lambda_handler"
   role_arn               = module.iam.role_arn
   api_gateway_source_arn = module.api_gateway.execution_arn
@@ -48,7 +47,7 @@ module "lambda_verify_otp" {
   source = "./module/lambda"
 
   function_name          = "VerifyOtpFunction"
-  zip_path               = "../lambda/zip/verify-otp.zip"
+  zip_path               = "../lambda/zip/verifyotp.zip"
   handler                = "verifyOtp.lambda_handler"
   role_arn               = module.iam.role_arn
   api_gateway_source_arn = module.api_gateway.execution_arn
@@ -56,6 +55,7 @@ module "lambda_verify_otp" {
   environment_variables = {
     OTP_TTL_SECONDS = var.otp_ttl_seconds
     OTP_TABLE_NAME  = module.dynamodb.table_name
+    OTP_HASH_KEY    = "86a26e57248d8075ed9eb1a867b415149a7dd91e5f675901cb7781825c7e954a"
 
   }
 }
