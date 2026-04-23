@@ -8,7 +8,7 @@ This project demonstrates a complete end-to-end solution combining AWS Lambda, A
 
 ## Architecture Diagram
 
-<img src="data/Blank board.png" width="500" height="300" alt="Architecture Diagram" />
+<img src="data/Blank board.png" width="800" height="300" alt="Architecture Diagram" />
 
 ---
 
